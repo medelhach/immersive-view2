@@ -198,50 +198,55 @@ const Nav = () => {
 };
 
 const Hero = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  <Section id="home" className="relative min-h-screen bg-black">
+    <MatterportEmbed mode="fill" />
+  </Section>
 
-  return (
-    <Section id="home" className="relative min-h-[92vh] overflow-hidden">
-      <div className="absolute inset-0">
-        {/* Background video/image */}
-        <video
-          className="h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="https://images.unsplash.com/photo-1521783988139-893ce4a69bef?q=80&w=1600&auto=format&fit=crop"
-        >
-          <source src="https://cdn.coverr.co/videos/coverr-architect-360-tour-1169/1080p.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
-      </div>
-      <Container className="relative z-10 flex min-h-[92vh] flex-col items-start justify-end pb-24">
-        <motion.div ref={ref} style={{ y }} className="max-w-3xl text-white">
-          <Pill>
-            <Globe2 className="h-4 w-4" />
-            Immersive 3D Virtual Tours for Every Industry
-          </Pill>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
-            Bring Your Space to Life
-          </h1>
-          <p className="mt-4 max-w-2xl text-white/80">
-            Capture, showcase, and share your space with premium 360° tours, HDR photography, and digital twins—built for real estate, hospitality, retail, cultural venues, and corporate offices.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
-              Book a Tour
-            </a>
-            <a href="#tour-demo" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
-              Live 360° Demo
-            </a>
-          </div>
-        </motion.div>
-      </Container>
-    </Section>
-  );
+
+  // const ref = useRef(null);
+  // const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  // const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+
+  // return (
+  //   <Section id="home" className="relative min-h-[92vh] overflow-hidden">
+  //     <div className="absolute inset-0">
+  //       {/* Background video/image */}
+  //       <video
+  //         className="h-full w-full object-cover"
+  //         autoPlay
+  //         muted
+  //         loop
+  //         playsInline
+  //         poster="https://images.unsplash.com/photo-1521783988139-893ce4a69bef?q=80&w=1600&auto=format&fit=crop"
+  //       >
+  //         <source src="https://cdn.coverr.co/videos/coverr-architect-360-tour-1169/1080p.mp4" type="video/mp4" />
+  //       </video>
+  //       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+  //     </div>
+  //     <Container className="relative z-10 flex min-h-[92vh] flex-col items-start justify-end pb-24">
+  //       <motion.div ref={ref} style={{ y }} className="max-w-3xl text-white">
+  //         <Pill>
+  //           <Globe2 className="h-4 w-4" />
+  //           Immersive 3D Virtual Tours for Every Industry
+  //         </Pill>
+  //         <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+  //           Bring Your Space to Life
+  //         </h1>
+  //         <p className="mt-4 max-w-2xl text-white/80">
+  //           Capture, showcase, and share your space with premium 360° tours, HDR photography, and digital twins—built for real estate, hospitality, retail, cultural venues, and corporate offices.
+  //         </p>
+  //         <div className="mt-6 flex flex-wrap gap-3">
+  //           <a href="#contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
+  //             Book a Tour
+  //           </a>
+  //           <a href="#tour-demo" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
+  //             Live 360° Demo
+  //           </a>
+  //         </div>
+  //       </motion.div>
+  //     </Container>
+  //   </Section>
+  // );
 };
 
 // New: Home page Matterport demo section
