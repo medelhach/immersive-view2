@@ -25,6 +25,7 @@ import {
   Youtube,
   MapPinned
 } from "lucide-react";
+import MatterportEmbed from "./components/MatterportEmbed"; // <-- added
 
 // ===== Utility =====
 const Section = ({ id, className = "", children }) => (
@@ -233,8 +234,8 @@ const Hero = () => {
             <a href="#contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
               Book a Tour
             </a>
-            <a href="#portfolio" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
-              See Our Work
+            <a href="#tour-demo" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
+              Live 360° Demo
             </a>
           </div>
         </motion.div>
@@ -242,6 +243,19 @@ const Hero = () => {
     </Section>
   );
 };
+
+// New: Home page Matterport demo section
+const TourDemo = () => (
+  <Section id="tour-demo" className="bg-slate-950 py-16">
+    <Container>
+      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo (Powered by Matterport)</h2>
+      <MatterportEmbed />
+      <p className="text-slate-300 mt-3 text-sm">
+        Use your mouse or touch to look around. Click the icons to navigate.
+      </p>
+    </Container>
+  </Section>
+);
 
 const Overview = () => (
   <Section id="overview" className="bg-gradient-to-b from-slate-950 to-slate-900 py-16">
@@ -606,6 +620,7 @@ export default function App() {
       <Nav />
       <main className="[--pad:4rem]">
         <Hero />
+        <TourDemo /> {/* <-- new Matterport section on Home */}
         <Overview />
         <Industries />
         <Portfolio />
