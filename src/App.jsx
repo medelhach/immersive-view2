@@ -253,7 +253,7 @@ const Hero = () => {
 const TourDemo = () => (
   <Section id="tour-demo" className="bg-slate-950 py-16">
     <Container>
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo (Powered by Matterport)</h2>
+      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo </h2>
       <MatterportEmbed />
       <p className="text-slate-300 mt-3 text-sm">
         Use your mouse or touch to look around. Click the icons to navigate.
