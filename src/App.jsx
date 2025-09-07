@@ -1,4 +1,3 @@
-// test commit 
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -24,12 +23,8 @@ import {
   Layers,
   Airplay,
   Youtube,
-  MapPinned,
-  MessageCircle,
-  Clock
+  MapPinned
 } from "lucide-react";
-
-import MatterportEmbed from "./components/MatterportEmbed"; // <-- added
 
 // ===== Utility =====
 const Section = ({ id, className = "", children }) => (
@@ -44,6 +39,22 @@ const Pill = ({ children }) => (
   <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur">
     {children}
   </span>
+);
+
+// Safe image with graceful fallback (handles blocked/expired hotlinks)
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop"; // neutral interior
+const SafeImg = ({ src, alt = "", className = "", fallback = FALLBACK_IMG }) => (
+  <img
+    src={src}
+    alt={alt}
+    className={className}
+    loading="lazy"
+    onError={(e) => {
+      if (e.currentTarget.src !== fallback) {
+        e.currentTarget.src = fallback;
+      }
+    }}
+  />
 );
 
 // ===== Data =====
@@ -202,69 +213,51 @@ const Nav = () => {
 };
 
 const Hero = () => {
-  <Section id="home" className="relative min-h-screen bg-black">
-    <MatterportEmbed mode="fill" />
-  </Section>
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
-
-  // const ref = useRef(null);
-  // const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  // const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-
-  // return (
-  //   <Section id="home" className="relative min-h-[92vh] overflow-hidden">
-  //     <div className="absolute inset-0">
-  //       {/* Background video/image */}
-  //       <video
-  //         className="h-full w-full object-cover"
-  //         autoPlay
-  //         muted
-  //         loop
-  //         playsInline
-  //         poster="https://images.unsplash.com/photo-1521783988139-893ce4a69bef?q=80&w=1600&auto=format&fit=crop"
-  //       >
-  //         <source src="https://cdn.coverr.co/videos/coverr-architect-360-tour-1169/1080p.mp4" type="video/mp4" />
-  //       </video>
-  //       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
-  //     </div>
-  //     <Container className="relative z-10 flex min-h-[92vh] flex-col items-start justify-end pb-24">
-  //       <motion.div ref={ref} style={{ y }} className="max-w-3xl text-white">
-  //         <Pill>
-  //           <Globe2 className="h-4 w-4" />
-  //           Immersive 3D Virtual Tours for Every Industry
-  //         </Pill>
-  //         <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
-  //           Bring Your Space to Life
-  //         </h1>
-  //         <p className="mt-4 max-w-2xl text-white/80">
-  //           Capture, showcase, and share your space with premium 360° tours, HDR photography, and digital twins—built for real estate, hospitality, retail, cultural venues, and corporate offices.
-  //         </p>
-  //         <div className="mt-6 flex flex-wrap gap-3">
-  //           <a href="#contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
-  //             Book a Tour
-  //           </a>
-  //           <a href="#tour-demo" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
-  //             Live 360° Demo
-  //           </a>
-  //         </div>
-  //       </motion.div>
-  //     </Container>
-  //   </Section>
-  // );
+  return (
+    <Section id="home" className="relative min-h-[92vh] overflow-hidden">
+      <div className="absolute inset-0">
+        {/* Background video/image */}
+        <video
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="https://images.unsplash.com/photo-1521783988139-893ce4a69bef?q=80&w=1600&auto=format&fit=crop"
+        >
+          <source src="https://cdn.coverr.co/videos/coverr-architect-360-tour-1169/1080p.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+      </div>
+      <Container className="relative z-10 flex min-h-[92vh] flex-col items-start justify-end pb-24">
+        <motion.div ref={ref} style={{ y }} className="max-w-3xl text-white">
+          <Pill>
+            <Globe2 className="h-4 w-4" />
+            Immersive 3D Virtual Tours for Every Industry
+          </Pill>
+          <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+            Bring Your Space to Life
+          </h1>
+          <p className="mt-4 max-w-2xl text-white/80">
+            Capture, showcase, and share your space with premium 360° tours, HDR photography, and digital twins—built for real estate, hospitality, retail, cultural venues, and corporate offices.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
+              Book a Tour
+            </a>
+            <a href="#portfolio" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
+              See Our Work
+            </a>
+          </div>
+        </motion.div>
+      </Container>
+    </Section>
+  );
 };
-
-// New: Home page Matterport demo section
-const TourDemo = () => (
-  <Section id="tour-demo" className="bg-slate-950 py-16">
-    <Container>
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo (Powered by Matterport)</h2>
-      <MatterportEmbed />
-      <p className="text-slate-300 mt-3 text-sm">
-        Use your mouse or touch to look around. Click the icons to navigate.
-      </p>
-    </Container>
-  </Section>
-);
 
 const Overview = () => (
   <Section id="overview" className="bg-gradient-to-b from-slate-950 to-slate-900 py-16">
@@ -314,7 +307,7 @@ const Industries = () => (
         {INDUSTRIES.map((ind) => (
           <motion.div key={ind.key} whileHover={{ y: -6 }} className="group overflow-hidden rounded-2xl border border-slate-200">
             <div className="relative h-40 w-full overflow-hidden">
-              <img src={ind.img} alt={ind.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <SafeImg src={ind.img} alt={ind.label} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
               <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white">
                 <span className="grid h-8 w-8 place-items-center rounded-lg bg-white/10 backdrop-blur">{ind.icon}</span>
@@ -372,7 +365,7 @@ const Portfolio = () => {
               className="group overflow-hidden rounded-2xl border border-slate-200 bg-white"
             >
               <div className="relative h-56 w-full overflow-hidden">
-                <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <SafeImg src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
                   <div>
@@ -453,7 +446,7 @@ const About = () => (
           </div>
         </div>
         <div className="overflow-hidden rounded-2xl border border-slate-200">
-          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1600&auto=format&fit=crop" alt="Team at work" className="h-full w-full object-cover" />
+          <SafeImg src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1600&auto=format&fit=crop" alt="Team at work" className="h-full w-full object-cover" />
         </div>
       </div>
     </Container>
@@ -469,7 +462,7 @@ const Services = () => (
         {SERVICES.map((s) => (
           <motion.div key={s.key} whileHover={{ y: -6 }} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <div className="relative h-44 w-full overflow-hidden">
-              <img src={s.image} alt={s.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <SafeImg src={s.image} alt={s.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
               <div className="absolute bottom-3 left-3 flex items-center gap-2 text-white">
                 <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 backdrop-blur">{s.icon}</span>
@@ -485,6 +478,30 @@ const Services = () => (
             </div>
           </motion.div>
         ))}
+      </div>
+    </Container>
+  </Section>
+);
+
+// New: dedicated Matterport section (café/restaurant)
+const CafeTour = () => (
+  <Section id="cafe-tour" className="bg-white py-20">
+    <Container>
+      <div className="flex flex-col items-start gap-3 pb-6">
+        <Pill><MapPin className="h-4 w-4" /> Live Demo Tour</Pill>
+        <h2 className="text-3xl font-semibold text-slate-900">Café / Restaurant 3D Tour</h2>
+        <p className="text-slate-600">Explore a sample hospitality space to see interactions, wayfinding, and engagement elements in action.</p>
+      </div>
+      <div className="overflow-hidden rounded-2xl border border-slate-200">
+        <div className="aspect-video w-full bg-slate-200">
+          {/* Public café tour (Figaro Coffee House) */}
+          <iframe
+            title="Café Matterport Tour"
+            className="h-full w-full"
+            src="https://my.matterport.com/show/?m=FKzJ7YqfFXP&play=1&brand=0"
+            allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
+          />
+        </div>
       </div>
     </Container>
   </Section>
@@ -542,7 +559,7 @@ const Blog = () => (
         {BLOG_POSTS.map((p) => (
           <motion.a key={p.title} href="#" whileHover={{ y: -6 }} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <div className="h-44 w-full overflow-hidden">
-              <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <SafeImg src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div className="p-5">
               <p className="text-lg font-semibold text-slate-900">{p.title}</p>
@@ -556,154 +573,56 @@ const Blog = () => (
   </Section>
 );
 
-const Contact = () => {
-  return (
-    <section id="contact" className="bg-gradient-to-b from-slate-900 to-slate-950 py-20 text-white">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-semibold mb-4">Ready to capture your space?</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Get in touch with us today and let's discuss how we can bring your space to life with immersive 360° tours
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
-          {/* Phone Contact */}
-          <div className="group text-center">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500/20 text-blue-400 mb-4 group-hover:bg-blue-500/30 transition-colors">
-              <Phone className="h-8 w-8" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-            <p className="text-white/80 mb-4">Ready to discuss your project?</p>
-            <a 
-              href="tel:+212612345678" 
-              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors block"
-            >
-              +212 6 12 34 56 78
-            </a>
-            <p className="text-sm text-white/60 mt-2">Mon-Fri, 9AM-6PM (GMT+1)</p>
-          </div>
-
-          {/* Email Contact */}
-          <div className="group text-center">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/20 text-green-400 mb-4 group-hover:bg-green-500/30 transition-colors">
-              <Mail className="h-8 w-8" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-            <p className="text-white/80 mb-4">Send us your project details</p>
-            <a 
-              href="mailto:hello@immersiveview.co" 
-              className="text-xl font-bold text-white hover:text-green-400 transition-colors block"
-            >
-              hello@immersiveview.co
-            </a>
-            <p className="text-sm text-white/60 mt-2">We respond within 24 hours</p>
-          </div>
-
-          {/* WhatsApp Contact */}
-          <div className="group text-center">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 mb-4 group-hover:bg-emerald-500/30 transition-colors">
-              <MessageCircle className="h-8 w-8" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">WhatsApp</h3>
-            <p className="text-white/80 mb-4">Quick chat about your needs</p>
-            <a 
-              href="https://wa.me/212612345678?text=Hi!%20I%27m%20interested%20in%20your%20virtual%20tour%20services" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl font-bold text-white hover:text-emerald-400 transition-colors block"
-            >
-              +212 6 12 34 56 78
-            </a>
-            <p className="text-sm text-white/60 mt-2">Available during business hours</p>
+const Contact = () => (
+  <Section id="contact" className="bg-gradient-to-b from-slate-900 to-slate-950 py-20 text-white">
+    <Container>
+      <div className="grid gap-10 md:grid-cols-2">
+        <div>
+          <h2 className="text-3xl font-semibold">Ready to capture your space?</h2>
+          <p className="mt-3 text-white/80">Tell us about your project and we’ll get back within one business day.</p>
+          <div className="mt-6 space-y-2 text-white/80">
+            <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@immersiveview.co</p>
+            <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> +212 6 12 34 56 78</p>
+            <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Casablanca, Morocco</p>
           </div>
         </div>
-
-        {/* Location & Business Hours */}
-        <div className="mt-16 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-semibold mb-4 flex items-center justify-center md:justify-start gap-2">
-              <MapPin className="h-5 w-5" />
-              Our Location
-            </h3>
-            <p className="text-white/80 mb-2">Casablanca, Morocco</p>
-            <p className="text-sm text-white/60">
-              We serve clients across Morocco and internationally via remote consultation
-            </p>
-          </div>
-
-          <div className="text-center md:text-right">
-            <h3 className="text-xl font-semibold mb-4 flex items-center justify-center md:justify-end gap-2">
-              <Clock className="h-5 w-5" />
-              Business Hours
-            </h3>
-            <div className="text-white/80 space-y-1">
-              <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-              <p>Saturday: 10:00 AM - 4:00 PM</p>
-              <p className="text-sm text-white/60">GMT+1 (Casablanca Time)</p>
+        <form onSubmit={(e)=>{e.preventDefault(); alert("Thanks! We’ll get in touch shortly.");}} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="sm:col-span-1">
+              <label className="text-sm">Name</label>
+              <input className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Your name" required />
+            </div>
+            <div className="sm:col-span-1">
+              <label className="text-sm">Email</label>
+              <input type="email" className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="you@company.com" required />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="text-sm">Phone</label>
+              <input className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="+212 ..." />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="text-sm">Message</label>
+              <textarea rows={4} className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Tell us about your space & goals" />
             </div>
           </div>
-        </div>
-
-        {/* Call-to-Action */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-white backdrop-blur mb-6">
-            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
-            Available for new projects
-          </div>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Ready to showcase your space? Contact us using any of the methods above and let's create something amazing together.
-          </p>
-          
-          {/* Quick action buttons */}
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a 
-              href="tel:+212612345678"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              Call Now
-            </a>
-            <a 
-              href="mailto:hello@immersiveview.co?subject=Virtual%20Tour%20Inquiry"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-white font-semibold hover:bg-white/20 transition-colors"
-            >
-              <Mail className="h-4 w-4" />
-              Send Email
-            </a>
-            <a 
-              href="https://wa.me/212612345678?text=Hi!%20I%27m%20interested%20in%20your%20virtual%20tour%20services"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-6 py-3 text-emerald-100 font-semibold hover:bg-emerald-500/20 transition-colors"
-            >
-              <MessageCircle className="h-4 w-4" />
-              WhatsApp
-            </a>
-          </div>
-        </div>
-
-        {/* Map */}
-        <div className="mt-16 overflow-hidden rounded-2xl border border-white/10">
-          <iframe
-            title="Office Location"
-            className="h-80 w-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13380.170969925507!2d-7.628!3d33.573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb90a5c9f1d0a3f%3A0x66c9c1c5a51e9a7!2sCasablanca!5e0!3m2!1sen!2sma!4v1680000000000"
-            allowFullScreen
-          />
-          <div className="bg-white/5 p-4 backdrop-blur">
-            <p className="text-center text-white/80">
-              <MapPin className="inline h-4 w-4 mr-1" />
-              Based in Casablanca, serving clients worldwide
-            </p>
-          </div>
-        </div>
+          <button className="mt-4 w-full rounded-xl bg-white px-4 py-2 font-semibold text-slate-900 hover:bg-slate-100">Send</button>
+        </form>
       </div>
-    </section>
-  );
-};
+
+      {/* Map placeholder */}
+      <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
+        <iframe
+          title="Office Map"
+          className="h-72 w-full"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13380.170969925507!2d-7.628!3d33.573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb90a5c9f1d0a3f%3A0x66c9c1c5a51e9a7!2sCasablanca!5e0!3m2!1sen!2sma!4v1680000000000"
+          allowFullScreen
+        />
+      </div>
+    </Container>
+  </Section>
+);
 
 const Footer = () => (
   <footer className="bg-slate-950 py-10 text-white/70">
@@ -727,13 +646,13 @@ export default function App() {
       <Nav />
       <main className="[--pad:4rem]">
         <Hero />
-        <TourDemo /> {/* <-- new Matterport section on Home */}
         <Overview />
         <Industries />
         <Portfolio />
         <Testimonials />
         <About />
         <Services />
+        <CafeTour />
         <Pricing />
         <Blog />
         <Contact />
