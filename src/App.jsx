@@ -1,3 +1,4 @@
+// test commit 
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -23,8 +24,11 @@ import {
   Layers,
   Airplay,
   Youtube,
-  MapPinned
+  MapPinned,
+  MessageCircle,
+  Clock
 } from "lucide-react";
+
 import MatterportEmbed from "./components/MatterportEmbed"; // <-- added
 
 // ===== Utility =====
@@ -253,7 +257,7 @@ const Hero = () => {
 const TourDemo = () => (
   <Section id="tour-demo" className="bg-slate-950 py-16">
     <Container>
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo </h2>
+      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo (Powered by Matterport)</h2>
       <MatterportEmbed />
       <p className="text-slate-300 mt-3 text-sm">
         Use your mouse or touch to look around. Click the icons to navigate.
@@ -552,56 +556,154 @@ const Blog = () => (
   </Section>
 );
 
-const Contact = () => (
-  <Section id="contact" className="bg-gradient-to-b from-slate-900 to-slate-950 py-20 text-white">
-    <Container>
-      <div className="grid gap-10 md:grid-cols-2">
-        <div>
-          <h2 className="text-3xl font-semibold">Ready to capture your space?</h2>
-          <p className="mt-3 text-white/80">Tell us about your project and we’ll get back within one business day.</p>
-          <div className="mt-6 space-y-2 text-white/80">
-            <p className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@immersiveview.co</p>
-            <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> +212 6 12 34 56 78</p>
-            <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Casablanca, Morocco</p>
+const Contact = () => {
+  return (
+    <section id="contact" className="bg-gradient-to-b from-slate-900 to-slate-950 py-20 text-white">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-semibold mb-4">Ready to capture your space?</h2>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+            Get in touch with us today and let's discuss how we can bring your space to life with immersive 360° tours
+          </p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3 max-w-4xl mx-auto">
+          {/* Phone Contact */}
+          <div className="group text-center">
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500/20 text-blue-400 mb-4 group-hover:bg-blue-500/30 transition-colors">
+              <Phone className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Call Us</h3>
+            <p className="text-white/80 mb-4">Ready to discuss your project?</p>
+            <a 
+              href="tel:+212612345678" 
+              className="text-2xl font-bold text-white hover:text-blue-400 transition-colors block"
+            >
+              +212 6 12 34 56 78
+            </a>
+            <p className="text-sm text-white/60 mt-2">Mon-Fri, 9AM-6PM (GMT+1)</p>
+          </div>
+
+          {/* Email Contact */}
+          <div className="group text-center">
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/20 text-green-400 mb-4 group-hover:bg-green-500/30 transition-colors">
+              <Mail className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">Email Us</h3>
+            <p className="text-white/80 mb-4">Send us your project details</p>
+            <a 
+              href="mailto:hello@immersiveview.co" 
+              className="text-xl font-bold text-white hover:text-green-400 transition-colors block"
+            >
+              hello@immersiveview.co
+            </a>
+            <p className="text-sm text-white/60 mt-2">We respond within 24 hours</p>
+          </div>
+
+          {/* WhatsApp Contact */}
+          <div className="group text-center">
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 mb-4 group-hover:bg-emerald-500/30 transition-colors">
+              <MessageCircle className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">WhatsApp</h3>
+            <p className="text-white/80 mb-4">Quick chat about your needs</p>
+            <a 
+              href="https://wa.me/212612345678?text=Hi!%20I%27m%20interested%20in%20your%20virtual%20tour%20services" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl font-bold text-white hover:text-emerald-400 transition-colors block"
+            >
+              +212 6 12 34 56 78
+            </a>
+            <p className="text-sm text-white/60 mt-2">Available during business hours</p>
           </div>
         </div>
-        <form onSubmit={(e)=>{e.preventDefault(); alert("Thanks! We’ll get in touch shortly.");}} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="sm:col-span-1">
-              <label className="text-sm">Name</label>
-              <input className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Your name" required />
-            </div>
-            <div className="sm:col-span-1">
-              <label className="text-sm">Email</label>
-              <input type="email" className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="you@company.com" required />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-sm">Phone</label>
-              <input className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="+212 ..." />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-sm">Message</label>
-              <textarea rows={4} className="mt-1 w-full rounded-xl border-0 bg-white/10 px-3 py-2 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Tell us about your space & goals" />
+
+        {/* Location & Business Hours */}
+        <div className="mt-16 grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+          <div className="text-center md:text-left">
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-center md:justify-start gap-2">
+              <MapPin className="h-5 w-5" />
+              Our Location
+            </h3>
+            <p className="text-white/80 mb-2">Casablanca, Morocco</p>
+            <p className="text-sm text-white/60">
+              We serve clients across Morocco and internationally via remote consultation
+            </p>
+          </div>
+
+          <div className="text-center md:text-right">
+            <h3 className="text-xl font-semibold mb-4 flex items-center justify-center md:justify-end gap-2">
+              <Clock className="h-5 w-5" />
+              Business Hours
+            </h3>
+            <div className="text-white/80 space-y-1">
+              <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+              <p>Saturday: 10:00 AM - 4:00 PM</p>
+              <p className="text-sm text-white/60">GMT+1 (Casablanca Time)</p>
             </div>
           </div>
-          <button className="mt-4 w-full rounded-xl bg-white px-4 py-2 font-semibold text-slate-900 hover:bg-slate-100">Send</button>
-        </form>
-      </div>
+        </div>
 
-      {/* Map placeholder */}
-      <div className="mt-12 overflow-hidden rounded-2xl border border-white/10">
-        <iframe
-          title="Office Map"
-          className="h-72 w-full"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13380.170969925507!2d-7.628!3d33.573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb90a5c9f1d0a3f%3A0x66c9c1c5a51e9a7!2sCasablanca!5e0!3m2!1sen!2sma!4v1680000000000"
-          allowFullScreen
-        />
+        {/* Call-to-Action */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-white backdrop-blur mb-6">
+            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
+            Available for new projects
+          </div>
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            Ready to showcase your space? Contact us using any of the methods above and let's create something amazing together.
+          </p>
+          
+          {/* Quick action buttons */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a 
+              href="tel:+212612345678"
+              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition-colors"
+            >
+              <Phone className="h-4 w-4" />
+              Call Now
+            </a>
+            <a 
+              href="mailto:hello@immersiveview.co?subject=Virtual%20Tour%20Inquiry"
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-white font-semibold hover:bg-white/20 transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              Send Email
+            </a>
+            <a 
+              href="https://wa.me/212612345678?text=Hi!%20I%27m%20interested%20in%20your%20virtual%20tour%20services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-6 py-3 text-emerald-100 font-semibold hover:bg-emerald-500/20 transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        {/* Map */}
+        <div className="mt-16 overflow-hidden rounded-2xl border border-white/10">
+          <iframe
+            title="Office Location"
+            className="h-80 w-full"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13380.170969925507!2d-7.628!3d33.573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb90a5c9f1d0a3f%3A0x66c9c1c5a51e9a7!2sCasablanca!5e0!3m2!1sen!2sma!4v1680000000000"
+            allowFullScreen
+          />
+          <div className="bg-white/5 p-4 backdrop-blur">
+            <p className="text-center text-white/80">
+              <MapPin className="inline h-4 w-4 mr-1" />
+              Based in Casablanca, serving clients worldwide
+            </p>
+          </div>
+        </div>
       </div>
-    </Container>
-  </Section>
-);
+    </section>
+  );
+};
 
 const Footer = () => (
   <footer className="bg-slate-950 py-10 text-white/70">
