@@ -66,11 +66,11 @@ const HIGHLIGHTS = [
 ];
 
 const INDUSTRIES = [
-  { key: "real-estate", label: "Real Estate", icon: <Building2 className="h-5 w-5" />, img: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { key: "hospitality", label: "Hospitality", icon: <Hotel className="h-5 w-5" />, img: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { key: "retail", label: "Retail", icon: <Store className="h-5 w-5" />, img: "https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { key: "cultural", label: "Cultural Spaces", icon: <Landmark className="h-5 w-5" />, img: "https://images.pexels.com/photos/2364017/pexels-photo-2364017.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { key: "corporate", label: "Corporate Offices", icon: <Briefcase className="h-5 w-5" />, img: "https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg?auto=compress&cs=tinysrgb&w=1600" }
+  { key: "real-estate", label: "Real Estate", icon: <Building2 className="h-5 w-5" />, img: "https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1600&auto=format&fit=crop" },
+  { key: "hospitality", label: "Hospitality", icon: <Hotel className="h-5 w-5" />, img: "https://images.unsplash.com/photo-1501117716987-c8e3f9a8be3a?q=80&w=1600&auto=format&fit=crop" },
+  { key: "retail", label: "Retail", icon: <Store className="h-5 w-5" />, img: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1600&auto=format&fit=crop" },
+  { key: "cultural", label: "Cultural Spaces", icon: <Landmark className="h-5 w-5" />, img: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?q=80&w=1600&auto=format&fit=crop" },
+  { key: "corporate", label: "Corporate Offices", icon: <Briefcase className="h-5 w-5" />, img: "https://images.unsplash.com/photo-1507209696998-3c532be9b2b1?q=80&w=1600&auto=format&fit=crop" }
 ];
 
 const SERVICES = [
@@ -78,7 +78,7 @@ const SERVICES = [
     key: "tours",
     title: "360° Virtual Tours",
     icon: <PlayCircle className="h-5 w-5" />,
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop",
     bullets: [
       "Interactive hotspots & navigation",
       "Mobile-ready viewer",
@@ -89,35 +89,35 @@ const SERVICES = [
     key: "hdr",
     title: "HDR Photography",
     icon: <Camera className="h-5 w-5" />,
-    image: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop",
     bullets: ["Magazine-grade stills", "Color-true processing", "Web & print ready"]
   },
   {
     key: "twins",
     title: "Digital Twins",
     icon: <ScanLine className="h-5 w-5" />,
-    image: "https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop",
     bullets: ["Accurate 3D scans", "Measurements & tags", "Facility documentation"]
   },
   {
     key: "drone",
     title: "Drone Photo & Video",
     icon: <Airplay className="h-5 w-5" />,
-    image: "https://images.pexels.com/photos/724994/pexels-photo-724994.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1600&auto=format&fit=crop",
     bullets: ["Cinematic aerials", "Licensed operators", "Wide-area coverage"]
   },
   {
     key: "gsv",
     title: "Google Street View Integration",
     icon: <MapPinned className="h-5 w-5" />,
-    image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop",
     bullets: ["Appear on Maps", "Boost discovery", "Easy to maintain"]
   },
   {
     key: "floor",
     title: "Floor Plan Overlays",
     icon: <Layers className="h-5 w-5" />,
-    image: "https://images.pexels.com/photos/3736736/pexels-photo-3736736.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1600&auto=format&fit=crop",
     bullets: ["Interactive maps", "Multi-level support", "Wayfinding"]
   }
 ];
@@ -141,29 +141,29 @@ const TESTIMONIALS = [
 ];
 
 const PORTFOLIO_ITEMS = [
-  { id: 1, title: "Modern Apartment", industry: "real-estate", img: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { id: 2, title: "Boutique Hotel Lobby", industry: "hospitality", img: "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { id: 3, title: "Concept Retail Store", industry: "retail", img: "https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { id: 4, title: "Heritage Museum Hall", industry: "cultural", img: "https://images.pexels.com/photos/1002703/pexels-photo-1002703.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { id: 5, title: "Open Plan Office", industry: "corporate", img: "https://images.pexels.com/photos/159213/hall-congress-architecture-building-159213.jpeg?auto=compress&cs=tinysrgb&w=1600" },
-  { id: 6, title: "Seaside Restaurant", industry: "hospitality", img: "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600" },
+  { id: 1, title: "Modern Apartment", industry: "real-estate", img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600&auto=format&fit=crop" },
+  { id: 2, title: "Boutique Hotel Lobby", industry: "hospitality", img: "https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1600&auto=format&fit=crop" },
+  { id: 3, title: "Concept Retail Store", industry: "retail", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" },
+  { id: 4, title: "Heritage Museum Hall", industry: "cultural", img: "https://images.unsplash.com/photo-1484557052118-9b50a4ac4d7d?q=80&w=1600&auto=format&fit=crop" },
+  { id: 5, title: "Open Plan Office", industry: "corporate", img: "https://images.unsplash.com/photo-1507209696998-3c532be9b2b1?q=80&w=1600&auto=format&fit=crop" },
+  { id: 6, title: "Seaside Restaurant", industry: "hospitality", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1600&auto=format&fit=crop" },
 ];
 
 const BLOG_POSTS = [
   {
     title: "How Virtual Tours Help Sell Properties Faster",
-    excerpt: "Engagement metrics prove that listings with immersive tours convert better—here's why.",
-    img: "https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    excerpt: "Engagement metrics prove that listings with immersive tours convert better—here’s why.",
+    img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1600&auto=format&fit=crop"
   },
   {
     title: "The Technology Behind Digital Twins",
     excerpt: "From LiDAR to photogrammetry: a quick primer on the tech that powers accuracy.",
-    img: "https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    img: "https://images.unsplash.com/photo-1555252586-c3d5d864fd4a?q=80&w=1600&auto=format&fit=crop"
   },
   {
     title: "Marketing Tips for Businesses Using Virtual Tours",
     excerpt: "Turn your tour into ROI with these simple distribution tactics.",
-    img: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1600"
+    img: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop"
   }
 ];
 
@@ -202,21 +202,65 @@ const Nav = () => {
 };
 
 const Hero = () => {
-  return (
-    <Section id="home" className="relative min-h-screen bg-black">
-      <MatterportEmbed mode="fill" />
-    </Section>
-  );
+  <Section id="home" className="relative min-h-screen bg-black">
+    <MatterportEmbed mode="fill" />
+  </Section>
+
+
+  // const ref = useRef(null);
+  // const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  // const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+
+  // return (
+  //   <Section id="home" className="relative min-h-[92vh] overflow-hidden">
+  //     <div className="absolute inset-0">
+  //       {/* Background video/image */}
+  //       <video
+  //         className="h-full w-full object-cover"
+  //         autoPlay
+  //         muted
+  //         loop
+  //         playsInline
+  //         poster="https://images.unsplash.com/photo-1521783988139-893ce4a69bef?q=80&w=1600&auto=format&fit=crop"
+  //       >
+  //         <source src="https://cdn.coverr.co/videos/coverr-architect-360-tour-1169/1080p.mp4" type="video/mp4" />
+  //       </video>
+  //       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+  //     </div>
+  //     <Container className="relative z-10 flex min-h-[92vh] flex-col items-start justify-end pb-24">
+  //       <motion.div ref={ref} style={{ y }} className="max-w-3xl text-white">
+  //         <Pill>
+  //           <Globe2 className="h-4 w-4" />
+  //           Immersive 3D Virtual Tours for Every Industry
+  //         </Pill>
+  //         <h1 className="mt-4 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+  //           Bring Your Space to Life
+  //         </h1>
+  //         <p className="mt-4 max-w-2xl text-white/80">
+  //           Capture, showcase, and share your space with premium 360° tours, HDR photography, and digital twins—built for real estate, hospitality, retail, cultural venues, and corporate offices.
+  //         </p>
+  //         <div className="mt-6 flex flex-wrap gap-3">
+  //           <a href="#contact" className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100">
+  //             Book a Tour
+  //           </a>
+  //           <a href="#tour-demo" className="rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/20">
+  //             Live 360° Demo
+  //           </a>
+  //         </div>
+  //       </motion.div>
+  //     </Container>
+  //   </Section>
+  // );
 };
 
 // New: Home page Matterport demo section
 const TourDemo = () => (
   <Section id="tour-demo" className="bg-slate-950 py-16">
     <Container>
-      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo - Modern Restaurant</h2>
-      <MatterportEmbed src="https://my.matterport.com/show/?m=vLYoS66cWpk&log=0&help=0&nt=0&play=1&qs=0&brand=1&dh=1&tour=1&gt=1&hr=1&mls=0&mt=1&tagNav=1&pin=1&portal=1&f=1&fp=1&nozoom=0&search=1&wh=1&kb=1&lp=0&title=0&tourcta=1&vr=1" />
+      <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">Live 360° Demo (Powered by Matterport)</h2>
+      <MatterportEmbed />
       <p className="text-slate-300 mt-3 text-sm">
-        Explore this beautiful restaurant interior. Use your mouse or touch to look around and click the navigation icons to move between rooms.
+        Use your mouse or touch to look around. Click the icons to navigate.
       </p>
     </Container>
   </Section>
@@ -342,17 +386,13 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* Full-screen tour demo - Updated with a coffee shop tour */}
+        {/* Full-screen tour demo */}
         <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200">
-          <div className="bg-slate-800 px-6 py-3">
-            <p className="text-white font-medium">Featured Project: Urban Coffee House</p>
-            <p className="text-slate-300 text-sm">Navigate through this modern coffee shop and see how virtual tours showcase hospitality spaces</p>
-          </div>
           <div className="aspect-video w-full bg-slate-200">
             <iframe
-              title="Coffee Shop Virtual Tour"
+              title="Embedded Tour"
               className="h-full w-full"
-              src="https://my.matterport.com/show/?m=GrzvuLZGhQF&log=0&help=0&nt=0&play=1&qs=0&brand=1&dh=1&tour=1&gt=1&hr=1&mls=0&mt=1&tagNav=1&pin=1&portal=1&f=1&fp=1&nozoom=0&search=1&wh=1&kb=1&lp=0&title=0&tourcta=1&vr=1"
+              src="https://my.matterport.com/show/?m=2F1M7j7RrZt"
               allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen"
             />
           </div>
@@ -375,7 +415,7 @@ const Testimonials = () => {
         <div className="flex flex-col items-center text-center">
           <Quote className="h-10 w-10" />
           <motion.p key={index} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6 max-w-3xl text-xl">
-            "{item.quote}"
+            “{item.quote}”
           </motion.p>
           <p className="mt-4 text-white/90">{item.author} — {item.role}</p>
         </div>
@@ -391,7 +431,7 @@ const About = () => (
         <div>
           <h2 className="text-3xl font-semibold text-slate-900">Our Story</h2>
           <p className="mt-4 text-slate-600">
-            We're on a mission to revolutionize how spaces are presented online. By combining 3D scanning, HDR imaging, and thoughtful post-production, we deliver experiences that feel real, informative, and on-brand.
+            We’re on a mission to revolutionize how spaces are presented online. By combining 3D scanning, HDR imaging, and thoughtful post-production, we deliver experiences that feel real, informative, and on-brand.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-2xl border border-slate-200 p-4">
@@ -413,7 +453,7 @@ const About = () => (
           </div>
         </div>
         <div className="overflow-hidden rounded-2xl border border-slate-200">
-          <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Team at work with 360 camera" className="h-full w-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1600&auto=format&fit=crop" alt="Team at work" className="h-full w-full object-cover" />
         </div>
       </div>
     </Container>
